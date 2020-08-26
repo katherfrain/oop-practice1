@@ -1,23 +1,30 @@
 class Person:
     def __init__(self, name, email, phone):
-         self.name = name
-         self.email = email
-         self.phone = phone
-         self.friends = []
-         self.greetingcount = 0
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.friends = []
+        self.greetingcount = 0
 
     def greet(self, other_person):
-         print('Hello {}, I am {}!'.format(other_person.name, self.name))
-         self.greetingcount = self.greetingcount + 1
-         return self.greetingcount
-    
+        print('Hello {}, I am {}!'.format(other_person.name, self.name))
+        self.greetingcount = self.greetingcount + 1
+        return self.greetingcount
+
     def print_contact_info(self):
-        print(f"{self.name}'s email: {self.email}\n{self.name}'s phone number: {self.phone}.")
+        print(f"{self.name}'s email: {self.email}")
+        print(f"{self.name}'s phone number: {self.phone}.")
     
     def add_friend(self, other):
+        friendcounter = 0
+        print(f"{self.name}'s friends are: ")
         self.friends.append(other)
         for friend in self.friends:
-            print(friend.name)
+            friendcounter = friendcounter + 1
+            print(f"\n{friendcounter} -- {friend.name.upper()}")
+            print(f"{friend.name}'s contact information is: ")
+            friend.print_contact_info()
+        print("*" * 20)
     
     def numfriends(self):
         return len(self.friends)
@@ -40,3 +47,4 @@ jordan.add_friend(sonny)
 jordan.add_friend(mark)
 print(jordan.numfriends())
 print(jordan.greeting_count())
+print(mark.numfriends())
